@@ -1,0 +1,649 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Naveen Mehta | Online Work & Job Forms</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #1769aa;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* HOME */
+        .hero {
+            min-height: 500px;
+            padding: 90px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #e8f4ff, #ffffff);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            color: #1769aa;
+            margin: 0 0 18px;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            margin: 0 0 15px;
+            color: #333;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .hero-button {
+            margin-top: 25px;
+            padding: 15px 30px;
+            background: #1769aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .hero-button:hover {
+            background: #0d4f82;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: -40px auto 50px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .feature-card h3 {
+            color: #1769aa;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* SERVICES */
+        .services-section {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            color: #1769aa;
+            font-size: 34px;
+            margin-bottom: 35px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .service-button {
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #1769aa;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .service-button:hover {
+            background: #0d4f82;
+            transform: translateY(-2px);
+        }
+
+        /* FORM */
+        #formBox {
+            display: none;
+            max-width: 650px;
+            margin: 30px auto 60px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        #formBox h2 {
+            text-align: center;
+            color: #1769aa;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #1769aa;
+            outline: none;
+        }
+
+        /* FILE UPLOAD */
+        .upload-box {
+            border: 2px dashed #1769aa;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f8fbff;
+        }
+
+        .upload-box input {
+            border: none;
+            padding: 5px;
+        }
+
+        .upload-help {
+            font-size: 13px;
+            color: #666;
+            margin-top: 7px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #1ebe5d;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #1769aa;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contact h2 {
+            margin-top: 0;
+        }
+
+        .contact p {
+            margin: 8px;
+        }
+
+
+        .brand-sub {
+            font-weight: normal;
+            font-size: 15px;
+            opacity: 0.9;
+            margin-left: 6px;
+        }
+
+        .owner-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 18px;
+            border-radius: 30px;
+            background: #1769aa;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            box-shadow: 0 5px 15px rgba(23,105,170,0.2);
+        }
+
+        .owner-line {
+            text-align: center;
+            color: #1769aa;
+            font-weight: bold;
+            margin: -25px auto 35px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links a {
+                margin: 0 8px;
+            }
+
+            .hero {
+                min-height: 450px;
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            #formBox {
+                margin: 20px 15px 50px;
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            Naveen Mehta <span class="brand-sub">Online Work</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HOME PAGE -->
+    <section class="hero" id="home">
+
+        <div class="owner-badge">NAVEEN MEHTA</div>
+
+        <h1>Online Work & Job Forms</h1>
+
+        <h2>Easy • Fast • Reliable Online Services</h2>
+
+        <p>
+            Get your online forms, certificates and other digital
+            services completed easily from your home.
+            Select a service and send your application details
+            directly through WhatsApp.
+        </p>
+
+        <a href="#services" class="hero-button">
+            Apply Now
+        </a>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features">
+
+        <div class="feature-card">
+            <h3>📝 Easy Application</h3>
+            <p>
+                Fill your details easily and quickly.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📄 Document Upload</h3>
+            <p>
+                Select your required documents and photos.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📱 WhatsApp Support</h3>
+            <p>
+                Send your application details directly on WhatsApp.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>⚡ Fast Service</h3>
+            <p>
+                Simple and convenient online service process.
+            </p>
+        </div>
+
+    </section>
+
+    <div class="owner-line">✦ Naveen Mehta Online Services ✦</div>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services">
+
+        <h2>Our Services</h2>
+
+        <div class="services">
+
+            <button class="service-button"
+                onclick="openForm('Income Certificate')">
+                Income Certificate
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Residence Certificate')">
+                Residence Certificate
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Caste Certificate')">
+                Caste Certificate
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('PAN Card')">
+                PAN Card
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Voter Card')">
+                Voter Card
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Driving Licence')">
+                Driving Licence
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Birth Certificate')">
+                Birth Certificate
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Scholarship')">
+                Scholarship
+            </button>
+
+            <button class="service-button"
+                onclick="openForm('Online Job Form')">
+                Online Job Form
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPLICATION FORM -->
+    <div id="formBox">
+
+        <h2>Application Form</h2>
+
+
+        <!-- SERVICE -->
+        <div class="form-group">
+
+            <label>Selected Service</label>
+
+            <input
+                type="text"
+                id="serviceName"
+                readonly
+            >
+
+        </div>
+
+
+        <!-- NAME -->
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+            >
+
+        </div>
+
+
+        <!-- MOBILE -->
+        <div class="form-group">
+
+            <label>Mobile Number</label>
+
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="Enter your mobile number"
+            >
+
+        </div>
+
+
+        <!-- DOCUMENT -->
+        <div class="form-group">
+
+            <label>Upload Document</label>
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    id="document"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                >
+
+                <div class="upload-help">
+                    PDF, JPG, JPEG or PNG
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO -->
+        <div class="form-group">
+
+            <label>Upload Photo</label>
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    id="photo"
+                    accept=".jpg,.jpeg,.png"
+                >
+
+                <div class="upload-help">
+                    JPG, JPEG or PNG
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+        <button
+            class="submit-button"
+            onclick="submitForm()">
+
+            📱 Submit on WhatsApp
+
+        </button>
+
+    </div>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p><strong>Naveen Mehta</strong> • Online Services & Job Forms</p>
+
+        <p>📱 WhatsApp: 6283232158</p>
+
+        <p>We are here to help you.</p>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function openForm(service) {
+
+            document.getElementById("formBox").style.display = "block";
+
+            document.getElementById("serviceName").value = service;
+
+            document.getElementById("formBox").scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        function submitForm() {
+
+            let name =
+                document.getElementById("fullName").value.trim();
+
+            let mobile =
+                document.getElementById("mobile").value.trim();
+
+            let service =
+                document.getElementById("serviceName").value;
+
+            let documentFile =
+                document.getElementById("document").files[0];
+
+            let photoFile =
+                document.getElementById("photo").files[0];
+
+
+            if (name === "" || mobile === "") {
+
+                alert("Please enter your name and mobile number.");
+
+                return;
+            }
+
+
+            let documentName =
+                documentFile
+                ? documentFile.name
+                : "No document selected";
+
+
+            let photoName =
+                photoFile
+                ? photoFile.name
+                : "No photo selected";
+
+
+            let message = `Hello Naveen Mehta, I want to apply for an online service.
+
+Name: ${name}
+Mobile: ${mobile}
+Service: ${service}
+
+Document: ${documentName}
+Photo: ${photoName}`;
+
+
+            let whatsappURL =
+                "https://wa.me/916283232158?text="
+                + encodeURIComponent(message);
+
+
+            window.open(whatsappURL, "_blank");
+
+        }
+
+    </script>
+
+</body>
+</html>
